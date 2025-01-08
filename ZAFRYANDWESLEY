@@ -1,0 +1,70 @@
+-- Variáveis principais
+local player = game.Players.LocalPlayer
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = player.PlayerGui
+screenGui.Name = "LoginGui"
+
+-- Criação da GUI
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0.3, 0, 0.4, 0)  -- Tamanho mais fino da GUI
+frame.Position = UDim2.new(0.35, 0, 0.3, 0)  -- Ajuste da posição
+frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame.Parent = screenGui
+frame.Draggable = true
+frame.Active = true
+
+-- Título
+local title = Instance.new("TextLabel")
+title.Text = "RBH4X"
+title.Size = UDim2.new(1, 0, 0.2, 0)
+title.Position = UDim2.new(0, 0, 0, 0)
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.TextSize = 30
+title.BackgroundTransparency = 1
+title.Parent = frame
+
+-- Caixa de texto para o login
+local loginTextBox = Instance.new("TextBox")
+loginTextBox.PlaceholderText = "Login"
+loginTextBox.Size = UDim2.new(0.8, 0, 0.2, 0)
+loginTextBox.Position = UDim2.new(0.1, 0, 0.25, 0)
+loginTextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+loginTextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+loginTextBox.Parent = frame
+
+-- Caixa de texto para a senha
+local passwordTextBox = Instance.new("TextBox")
+passwordTextBox.PlaceholderText = "Senha"
+passwordTextBox.Size = UDim2.new(0.8, 0, 0.2, 0)
+passwordTextBox.Position = UDim2.new(0.1, 0, 0.5, 0)
+passwordTextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+passwordTextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+passwordTextBox.Parent = frame
+
+-- Botão de confirmar
+local confirmButton = Instance.new("TextButton")
+confirmButton.Text = "Confirmar"
+confirmButton.Size = UDim2.new(0.8, 0, 0.2, 0)
+confirmButton.Position = UDim2.new(0.1, 0, 0.75, 0)  -- Ajuste para melhor exibição
+confirmButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+confirmButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+confirmButton.Parent = frame
+
+-- Função de login
+local function handleLogin()
+    local login = loginTextBox.Text
+    local password = passwordTextBox.Text
+
+    -- Verificando login e senha
+    if login == "BY_WESLEY" and password == "BY_WESLEY" then
+        -- Executar o script
+        loadstring(game:HttpGet("https://pastebin.com/raw/MG9tZT7M"))()
+        screenGui:Destroy()  -- Remove a GUI após o login correto
+    else
+        -- Avisar o jogador
+        game.Players.LocalPlayer:Kick("Wrong Login")  -- Retira o jogador do jogo com o aviso
+    end
+end
+
+-- Conectar a função ao botão
+confirmButton.MouseButton1Click:Connect(handleLogin)
